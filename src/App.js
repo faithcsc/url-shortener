@@ -1,57 +1,79 @@
-import React from 'react'
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
-import Urlform from './Urlform'
-import ShortUrlRedirect from './ShortUrlRedirect'
-import Header from './Header'
-import Copyright from './Copyright'
-import Notfound from './Notfound'
-import * as constants from './constants'
+import React from 'react';
+import {
+  Switch, BrowserRouter as Router, Route, useHistory,
+} from 'react-router-dom';
+
+import { withAuthenticationRequired } from '@auth0/auth0-react';
+import Cookies from 'js-cookie';
+import Urlform from './components/Urlform';
+import ShortUrlRedirect from './components/ShortUrlRedirect';
+import Header from './components/Header';
+import Copyright from './components/Copyright';
+import Notfound from './components/Notfound';
+// import Mylinks from './components/Mylinks';
+// import Linechart from './components/Chart';
+
+import * as constants from './shared/constants';
+
+import Auth0ProviderWithHistory from './shared/auth0-provider-with-history';
 
 function App() {
+  const history = useHistory();
+  const onRedirectCallback = (appState) => {
+    history.push(appState?.returnTo || window.location.pathname);
+  };
+  const ProtectedRoute = ({ component, ...args }) => (
+    <Route component={withAuthenticationRequired(component)} {...args} />
+  );
+
   return (
     <Router>
-      <Header />
-      {/* <div>
-        <a href="/dashboard">Dashboard</a>
-      </div> */}
-      <Switch>
-        <Route exact path="/" component={Urlform} />
-        <Route exact path="/404">
-          <Notfound />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/register">
-          <Register />
-        </Route>
-        <Route exact path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route path={`/${constants.SHORT_URL_REGEX}`}
-          render={(props) => <ShortUrlRedirect {...props} />} >
-        </Route>
-        <Route component={Notfound} />
-      </Switch>
-      <Copyright />
-    </Router >
-  )
+      <Auth0ProviderWithHistory>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Urlform} />
+          <Route exact path="/404">
+            <Notfound />
+          </Route>
+          {/* <Route exact path="/deletedaccount">
+            <Deletedaccount />
+          </Route>
+          <ProtectedRoute path="/account" component={Account} />
+          <ProtectedRoute path="/links" component={Mylinks} /> */}
+          <Route
+            path={`/${constants.SHORT_URL_REGEX}`}
+            render={(props) => <ShortUrlRedirect {...props} />}
+          />
+          <Route component={Notfound} />
+        </Switch>
+        {/* <Cookiesdisplay /> */}
+        <Copyright />
+      </Auth0ProviderWithHistory>
+    </Router>
+  );
 }
 
-function Login() {
+function Cookiesdisplay() {
+  const allcookies = Cookies.get();
   return (
-    <div><h2>Login</h2></div>
-  )
-}
-function Register() {
-  return (
-    <div><h2>Register</h2></div>
-  )
-}
-function Dashboard() {
-  return (
-    <div><h2>Dashboard</h2></div>
-  )
+    <div>
+      <pre className="col-12 text-light bg-dark p-4">
+        Cookies display =
+        {JSON.stringify(allcookies, null, 2)}
+      </pre>
+    </div>
+  );
 }
 
-export default App
+function Deletedaccount() {
+  const cookies = Cookies.get();
+  Object.keys(cookies).forEach((key) => Cookies.remove(key));
+  return (
+    <div>
+      <h2>We're sorry to see you go.</h2>
+      <h3>Your account has been deleted.</h3>
+    </div>
+  );
+}
+
+export default App;
