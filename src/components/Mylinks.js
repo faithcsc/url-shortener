@@ -1,7 +1,7 @@
 import React from 'react';
 import { withAuth0 } from '@auth0/auth0-react';
 import Cookies from 'js-cookie';
-import * as constants from '../shared/constants';
+import config from '../shared/config';
 import makeRequest from '../shared/requests';
 import Linechart from './Chart';
 import convertData from '../shared/chartshelper';
@@ -17,11 +17,11 @@ async function requestAuthToken(userData) {
     userid: userData.sub,
   };
 
-  const response = await makeRequest(constants.DB_ENDPOINTS.newuser, sendUserData, 'application/json', 'POST');
+  const response = await makeRequest(config.DB_ENDPOINTS.newuser, sendUserData, 'application/json', 'POST');
   const idKey = 'id';
   if (idKey in response) { // user is in database
     Cookies.set('userid', response[idKey]);
-    const authToken = makeRequest(constants.DB_ENDPOINTS.userauth, sendUserData, 'application/json', 'POST');
+    const authToken = makeRequest(config.DB_ENDPOINTS.userauth, sendUserData, 'application/json', 'POST');
     return authToken;
   }
   return {};
@@ -49,7 +49,7 @@ async function onSuccessfulLogin(auth0data) {
 
 async function retrieveUserLinks(cookiesUser) {
   const { userid } = cookiesUser;
-  const userlinks = await makeRequest(constants.DB_ENDPOINTS.userlinks + userid, {}, '', 'GET');
+  const userlinks = await makeRequest(config.DB_ENDPOINTS.userlinks + userid, {}, '', 'GET');
   return userlinks;
 }
 

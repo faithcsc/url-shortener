@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
@@ -29,32 +30,7 @@
 
 <body>
 
-  <script>
-    window.fbAsyncInit = function () {
-      FB.init({
-        appId: '182655583828126',
-        cookie: true,
-        xfbml: true,
-        version: 'v11.0'
-      });
-
-      FB.AppEvents.logPageView();
-
-    };
-
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) { return; }
-      js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0&appId=182655583828126&autoLogAppEvents=1"
-    nonce="dOcaYqrr"></script>
-
+ 
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
   <!--

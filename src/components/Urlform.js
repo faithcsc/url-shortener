@@ -8,10 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { withStyles } from '@material-ui/core/styles';
 import Cookies from 'js-cookie';
-import * as constants from '../shared/constants';
+import config from '../shared/config';
 import makeRequest from '../shared/requests';
 
-const allowedChars = constants.ALLOWED_CHARS_IN_SHORT_URL;
+const allowedChars = config.ALLOWED_CHARS_IN_SHORT_URL;
 
 const styles = (theme) => ({
   paper: {
@@ -86,7 +86,7 @@ async function postShortUrl(LongUrl, ShortUrl, userid = '') {
     short: ShortUrl,
     user: userid,
   };
-  const response = await makeRequest(constants.DB_ENDPOINTS.link, data, 'application/json', 'POST');
+  const response = await makeRequest(config.DB_ENDPOINTS.link, data, 'application/json', 'POST');
   return response;
 }
 
@@ -151,7 +151,7 @@ class Urlform extends React.Component {
       let response = {};
       let retries = 0;
       const userid = getLoggedinUser();
-      while (retries < constants.MAX_RETRIES && !(constants.SHORT_URL_KEY in response)) {
+      while (retries < config.MAX_RETRIES && !(config.SHORT_URL_KEY in response)) {
         shortUrl = createShortUrl();
         response = await postShortUrl(longUrl, shortUrl, userid);
         retries += 1;
@@ -162,9 +162,9 @@ class Urlform extends React.Component {
           shorturl: '',
           status: JSON.stringify(response),
         });
-      } else if (constants.SHORT_URL_KEY in response) {
+      } else if (config.SHORT_URL_KEY in response) {
         // TODO better way to generate valid url
-        shortUrl = window.location.href + response[constants.SHORT_URL_KEY];
+        shortUrl = window.location.href + response[config.SHORT_URL_KEY];
         this.setState({
           shorturl: shortUrl,
           status: '',

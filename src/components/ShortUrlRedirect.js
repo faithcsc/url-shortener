@@ -1,5 +1,5 @@
 import React from 'react';
-import * as constants from '../shared/constants';
+import config from '../shared/config';
 
 class ShortUrlRedirect extends React.Component {
   constructor() {
@@ -11,12 +11,12 @@ class ShortUrlRedirect extends React.Component {
     let shorturl;
     shorturl = window.location.pathname;
     shorturl = shorturl.substr(1, shorturl.length);
-    fetch(constants.DB_ENDPOINTS.link + shorturl, { method: 'GET' })
+    fetch(config.DB_ENDPOINTS.link + shorturl, { method: 'GET' })
       .then((response) => response.json())
       .then((result) => {
-        if (constants.LONG_URL_KEY in result) {
+        if (config.LONG_URL_KEY in result) {
           this.setState({
-            newWindowLocation: result[constants.LONG_URL_KEY],
+            newWindowLocation: result[config.LONG_URL_KEY],
           });
         } else {
           this.setState({
@@ -31,7 +31,11 @@ class ShortUrlRedirect extends React.Component {
     if (newWindowLocation) {
       window.location = newWindowLocation;
     }
-    return <div><h2>Loading....</h2></div>;
+    return (
+      <div>
+        <h1 style={{ textAlign: "center"}}>Loading....</h1>
+      </div>
+    );
   }
 }
 

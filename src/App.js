@@ -13,7 +13,7 @@ import Notfound from './components/Notfound';
 // import Mylinks from './components/Mylinks';
 // import Linechart from './components/Chart';
 
-import * as constants from './shared/constants';
+import config from './shared/config';
 
 import Auth0ProviderWithHistory from './shared/auth0-provider-with-history';
 
@@ -41,7 +41,7 @@ function App() {
           <ProtectedRoute path="/account" component={Account} />
           <ProtectedRoute path="/links" component={Mylinks} /> */}
           <Route
-            path={`/${constants.SHORT_URL_REGEX}`}
+            path={`/${config.SHORT_URL_REGEX}`}
             render={(props) => <ShortUrlRedirect {...props} />}
           />
           <Route component={Notfound} />
