@@ -8,13 +8,22 @@ import json
 allowed_chars = string.ascii_lowercase + string.ascii_uppercase + string.digits
 allowed_chars = [i for i in allowed_chars]
 
-num_links = 3
+num_links = 100
 num_days = 7
-hits_range = range(0, 20)
+hits_range = range(0, 10)
 lastday = datetime.datetime.today()
-datelist = [lastday - datetime.timedelta(days=num_days)
+datelist = [lastday - datetime.timedelta(days=x)
             for x in range(num_days)]
 datelist = [i.replace(hour=0, minute=0, second=0, microsecond=0) for i in datelist]
+timeshifted = []
+for dateitem in datelist:
+    for _ in range(10):
+        newdateitem = dateitem
+        newdateitem += datetime.timedelta(seconds=random.randint(0, 86400))
+        timeshifted.append(newdateitem)
+datelist.extend(timeshifted)
+datelist.sort()
+del timeshifted
 userlinks = []
 websites = []
 
@@ -541,14 +550,29 @@ for i in range(num_links):
         startDate += datetime.timedelta(days=1)
 
     analytics = sorted(analytics, key=lambda x: x["datetime"])
-    createdOn = int(createdOn.timestamp())
+    createdOn = int(createdOn.timestamp()) * 1000
 
     userlinks.append({
         "short": short,
-        "long": long,
+        "long": "//" + long,
         "createdOn": createdOn,
         "analytics": analytics
     })
 
-with open("userlinks", "w") as f:
-    f.write(json.dumps(userlinks, indent=4))
+# with open("../src/components/mylinks/placeholderdata.js", "w") as f:
+#     f.write("export const placeholderData = " + json.dumps(userlinks, indent=4))
+
+# Generate mongo query
+
+with open("mongoQuery", "w") as f:
+    f.write("use rest-tutorial")
+    f.write("\n")
+    f.write("db.shortlongs.deleteMany({})")
+    f.write("\n")
+    for userlink in userlinks:
+        userlink.update({"user": "610b85811850870013a9e54e"})
+        query = json.dumps(userlink)
+        f.write("db.shortlongs.insert({})".format(query))
+        f.write("\n")
+
+
