@@ -25,6 +25,7 @@ yarn-error.log*
 .DS_STORE
 cert/
 build/
+node_modules
 data/
 node_modules/
 scripts/flow/*/.flowconfig
