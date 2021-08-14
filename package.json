@@ -18,6 +18,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
     "styled-components": "^5.3.0",
+    "yarn-audit-fix": "^6.4.1",
     "yup": "^0.32.9"
   },
   "scripts": {
