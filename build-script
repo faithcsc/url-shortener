@@ -1,5 +1,0 @@
-npm run build; serve -s build --listen 80 --ssl-cert "/etc/letsencrypt/live/sus.picio.us/cert.pem" --ssl-key "/etc/letsencrypt/live/sus.picio.us/privkey.pem"
-
-curl --location --request POST 'http://0.0.0.0:3600/links' \
---header 'Content-Type: application/json' \
---data-raw '{"short": "ABC1234567", "long": "http://google.com", "user": ""}'

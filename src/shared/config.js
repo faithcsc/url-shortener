@@ -1,25 +1,26 @@
 const config = {
-  SHORT_URL_REGEX: '([a-zA-Z0-9]{6,20})',
+  SHORT_URL_REGEX: "([a-zA-Z0-9]{6,20})",
+  LINKS_REGEX: "^links?code=.*&state=.*",
   MAX_RETRIES: 5,
   ALLOWED_CHARS_IN_SHORT_URL:
-    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-  LONG_URL_KEY: 'long',
-  SHORT_URL_KEY: 'short',
-}
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  LONG_URL_KEY: "long",
+  SHORT_URL_KEY: "short",
+};
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   config.DB_ENDPOINTS = {
-    base: 'http://localhost:8080',
-  }
+    base: "http://localhost:8080",
+  };
 } else {
   config.DB_ENDPOINTS = {
-    base: 'https://sus.picio.us:8443',
-  }
+    base: "https://sus.picio.us:8443",
+  };
 }
 
 const mobileCheck = () => {
-  let check = false
-  ;(function (a) {
+  let check = false;
+  (function (a) {
     if (
       /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
         a
@@ -28,15 +29,15 @@ const mobileCheck = () => {
         a.substr(0, 4)
       )
     )
-      check = true
-  })(navigator.userAgent || navigator.vendor || window.opera)
-  return check
-}
+      check = true;
+  })(navigator.userAgent || navigator.vendor || window.opera);
+  return check;
+};
 
-config.isMobile = mobileCheck()
-config.DB_ENDPOINTS.newuser = `${config.DB_ENDPOINTS.base}/users/`
-config.DB_ENDPOINTS.userauth = `${config.DB_ENDPOINTS.base}/auth/`
-config.DB_ENDPOINTS.link = `${config.DB_ENDPOINTS.base}/links/`
-config.DB_ENDPOINTS.userlinks = `${config.DB_ENDPOINTS.base}/userlinks/`
+config.isMobile = mobileCheck();
+config.DB_ENDPOINTS.newuser = `${config.DB_ENDPOINTS.base}/users/`;
+config.DB_ENDPOINTS.userauth = `${config.DB_ENDPOINTS.base}/auth/`;
+config.DB_ENDPOINTS.link = `${config.DB_ENDPOINTS.base}/links/`;
+config.DB_ENDPOINTS.userlinks = `${config.DB_ENDPOINTS.base}/userlinks/`;
 
-export default config
+export default config;
