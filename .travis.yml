@@ -15,7 +15,7 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    ssh deploy@sus.picio.us "bash -c rm -rf /var/sus.picio.us/html/*"; rsync
+    ssh deploy@sus.picio.us "bash -c 'rm -rf /var/sus.picio.us/html/*'"; rsync
     -r --delete-after --quiet $TRAVIS_BUILD_DIR/build deploy@sus.picio.us:/var/sus.picio.us/html/
   on:
     branch: main
