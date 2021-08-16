@@ -1,25 +1,29 @@
-# URL Shortener
+# [URL Shortener](https://sus.picio.us) [![Build Status](https://app.travis-ci.com/faithcsc/url-shortener.svg?branch=main)](https://app.travis-ci.com/faithcsc/url-shortener)
 
 Make short, totally not suspicious links. https://sus.picio.us
 
-Create short links:
 ![Landing page](images/shorten.gif)
 
 Sign up to save and manage all your links from a dashboard:
 ![Search for relevant links from dashboard](images/dashboard-search.gif)
 
-Click analytics tracks how well your links are doing:
-![Sort links on dashboard by most and least popular](images/dashboard-sort-highest.gif)
-
-Easily remove links you don't want:
-![Delete links you don't want](images/dashboard-delete.gif)
-
 ## Built with
 
-- [React](https://reactjs.org/) (frontend)
-- [Node.js](https://nodejs.org/en/) (backend)
-- [Docker](https://www.docker.com/) (backend)
-- [Auth0](https://auth0.com/) (authentication)
+- [React](https://reactjs.org/)
+- [Material UI](https://material-ui.com/)
+- [Formik](https://formik.org/)
+- [Node.js](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com/)
+- [Docker](https://www.docker.com/)
+- [Auth0](https://auth0.com/)
+
+## Deployed with
+
+- [DigitalOcean](https://www.digitalocean.com/products/droplets/) basic droplet
+- [Namecheap](https://www.namecheap.com/)
+- [Nginx](https://www.nginx.com/)
+- [Certbot](https://certbot.eff.org/)
+- [Travis CI](https://travis-ci.org/)
 
 ## Getting started
 
