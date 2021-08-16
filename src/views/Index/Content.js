@@ -32,7 +32,7 @@ function Content() {
                 <div class="features-icons-icon d-flex  icon-bra-ails">
                   <i class="icon-emotsmile m-auto text-primary icon-ails"></i>
                 </div>
-                <h5>Custom Links</h5>
+                <h5>Custom links</h5>
                 <p class="lead mb-0">
                   Create custom links that increase brand awareness and
                   engagement.

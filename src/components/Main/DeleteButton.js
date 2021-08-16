@@ -1,13 +1,8 @@
-import React from 'react'
-import Button from '@material-ui/core/Button'
-import DeleteIcon from '@material-ui/icons/Delete'
-import Grid from '@material-ui/core/Grid'
+import React from "react";
+import Button from "@material-ui/core/Button";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 class DeleteButton extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <Button
@@ -21,8 +16,8 @@ class DeleteButton extends React.Component {
       >
         Delete
       </Button>
-    )
+    );
   }
 }
 
-export default DeleteButton
+export default DeleteButton;

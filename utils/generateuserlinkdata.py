@@ -8,9 +8,10 @@ import json
 allowed_chars = string.ascii_lowercase + string.ascii_uppercase + string.digits
 allowed_chars = [i for i in allowed_chars]
 
+USER_ID = "61177fec353f970011bb1d4f"
 num_links = 100
-num_days = 7
-hits_range = range(0, 10)
+num_days = 14
+hits_range = range(5, 8)
 lastday = datetime.datetime.today()
 datelist = [lastday - datetime.timedelta(days=x)
             for x in range(num_days)]
@@ -33,17 +34,14 @@ websites = [
     "apple.com",
     "cloudflare.com",
     "microsoft.com",
-    "www.blogger.com",
     "support.google.com",
     "play.google.com",
     "linkedin.com",
     "wordpress.org",
     "en.wikipedia.org",
-    "youtu.be",
     "docs.google.com",
     "mozilla.org",
     "maps.google.com",
-    "europa.eu",
     "plus.google.com",
     "googleusercontent.com",
     "sites.google.com",
@@ -559,9 +557,6 @@ for i in range(num_links):
         "analytics": analytics
     })
 
-# with open("../src/components/mylinks/placeholderdata.js", "w") as f:
-#     f.write("export const placeholderData = " + json.dumps(userlinks, indent=4))
-
 # Generate mongo query
 
 with open("mongoQuery", "w") as f:
@@ -570,7 +565,7 @@ with open("mongoQuery", "w") as f:
     f.write("db.shortlongs.deleteMany({})")
     f.write("\n")
     for userlink in userlinks:
-        userlink.update({"user": "610b85811850870013a9e54e"})
+        userlink.update({"user": USER_ID})
         query = json.dumps(userlink)
         f.write("db.shortlongs.insert({})".format(query))
         f.write("\n")

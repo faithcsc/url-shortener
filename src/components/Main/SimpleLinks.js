@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOMServer from "react-dom/server";
 import { withAuth0 } from "@auth0/auth0-react";
 
 import {
@@ -11,7 +10,6 @@ import {
 import Loading from "./Loading";
 
 import { DataGrid } from "@material-ui/data-grid";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
@@ -184,7 +182,7 @@ class SimpleLinks extends React.Component {
 
   async deleteShortlink(displayShortUrl) {
     const item = this.state.formattedUserlinks.filter(
-      (item) => item.displayShortUrl == displayShortUrl
+      (item) => item.displayShortUrl === displayShortUrl
     )[0];
     const shortUrl = item.shortUrl;
     const cookies = this.state.cookies;
@@ -193,13 +191,13 @@ class SimpleLinks extends React.Component {
     await requestDeleteShortUrl(shortUrl, userid);
 
     const formattedUserlinks = this.state.formattedUserlinks.filter(
-      (item) => item.shortUrl != shortUrl
+      (item) => item.shortUrl !== shortUrl
     );
     this.setState({ formattedUserlinks });
 
     const formattedFilteredUserlinks =
       this.state.formattedFilteredUserlinks.filter(
-        (item) => item.shortUrl != shortUrl
+        (item) => item.shortUrl !== shortUrl
       );
     this.setState({ formattedFilteredUserlinks });
   }

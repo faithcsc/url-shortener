@@ -14,11 +14,10 @@
     "js-cookie": "^3.0.0",
     "material-ui-search-bar": "^1.0.0",
     "react": "^16.14.0",
+    "react-device-detect": "^1.17.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
-    "styled-components": "^5.3.0",
-    "yarn-audit-fix": "^6.4.1",
     "yup": "^0.32.9"
   },
   "scripts": {
