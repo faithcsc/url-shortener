@@ -19,7 +19,7 @@ deploy:
     ssh deploy@sus.picio.us "bash -c rm -rf /var/sus.picio.us/html*"; rsync
     -r --delete-after --quiet $TRAVIS_BUILD_DIR/build deploy@sus.picio.us:/var/sus.picio.us/html/
   on:
-    branch: master
+    branch: main
 env:
   global:
     - secure: aJ6zDayjZO9Z1GvEFA3k2ApgwNgNGwFSmt7Z9zYjlojkIFA5RiCMlRUSXVExkjjwx55F5lY5WsuOw9m+HFdaG+m8Xoe6OJSfcrJDrH/dey6BQbQqN4FUmtg/2XSqtbevmHgedKbDjVUZUuFIwQppg6p1BC25zKjT6JtxhOLuLSTov1AC6kEw/CdMn49n6jq8CzmHhuw1lRCyW1JkKhxg+F7vatvt9qICuuntD/qndcWQv4jWkQrNIg3ON+VLkn2DjFjk/73dB4pG1+E3oQI8tzI6bOVHn/9fAL/Wwv3SGpXyBaylredn63cBBi5XvcvnQ9o+fqoE1UtBQiqqwVkZjhCOY+YGww8thuhGyV+054Lga/EuU0kE64XoP934plZfVhabF7mUkxbPYkDpRcrIrk8Zg6FNVAmJi7RvyeYKjucpZDQ7y/j8vjsfw2nrCEDOV4ApbHJIOl1+FuQiBzoqyh4Ds/WVlyXJYb76nC3G1SzqMaACzNp6wM25AibxxEyEyT3BD3QaJkwO/muH8FvVDFtdTNLfJmeFYcIulHhj5RT5DyIgqGMvDqTi4eh7rrDSTPFIJdSDpjAiV9iqst1R832JyXm3dYGplbBlIcTsoLBfRA6GWrWdUfyGb7Ffu/s9zWZlwO3yLgFzMU6J1IZd1w45f5TJOOpnTYFWgC93cSM=
