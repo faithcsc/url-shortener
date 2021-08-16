@@ -17,6 +17,9 @@
 .env.test.local
 .env.production.local
 
+# demo
+images/original-screen-record/dashboard.mp4
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
