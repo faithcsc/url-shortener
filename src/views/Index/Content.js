@@ -1,7 +1,9 @@
 import React from "react";
 import Urlform from "../../components/Main/Urlform";
 
-import { isMobile } from "../../shared/config";
+import { config } from "../../shared/config";
+
+const { isMobile } = config;
 
 function Content() {
   return (
