@@ -1,6 +1,8 @@
 import React from "react";
 import Urlform from "../../components/Main/Urlform";
 
+import { isMobile } from "../../shared/config";
+
 function Content() {
   return (
     <div>
@@ -18,9 +20,7 @@ function Content() {
               <Urlform />
             </h6>
           </div>
-          <div className="col-sm-7 showcase-img">
-            {/* <div className="circle"></div> */}
-          </div>
+          {isMobile ? "" : <div className="col-sm-7 showcase-img"></div>}
         </div>
       </div>
 
