@@ -54,6 +54,8 @@ docker-compose build
 docker-compose up
 ```
 
+For backend REST API documentation, refer to the [documentation in the backend repository](https://github.com/faithcsc/url-shortener-database#REST-API-Documentation).
+
 ### Production
 
 - Point your domain name to your server's IP address: [How can I set up an A (address) record for my domain?](https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain/)
