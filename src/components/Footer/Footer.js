@@ -6,12 +6,20 @@ import Typography from "@material-ui/core/Typography";
 function Footer() {
   return (
     <Box m={2}>
-      <Typography variant="body2" color="textSecondary" align="center">
+      <Typography variant="body1" color="textSecondary" align="center">
         {"© "}
         <Link color="inherit" href="https://faithchia.me">
           Faith Chia
         </Link>{" "}
         {new Date().getFullYear()}
+        {" | "}{" "}
+        <Link color="inherit" href="https://linkedin.com/in/faithchiasuchi">
+          LinkedIn
+        </Link>
+        {" | "}{" "}
+        <Link color="inherit" href="https://github.com/faithcsc">
+          Github
+        </Link>
       </Typography>
     </Box>
   );
